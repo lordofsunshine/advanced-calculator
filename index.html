@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A calculator with surprises</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+    <div>
+        <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
+            <div class="flex flex-col items-end mb-4">
+                <div id="expression" class="text-sm text-gray-500 h-6 w-full text-right overflow-x-auto"></div>
+                <div id="display" class="text-3xl font-bold text-gray-800 w-full text-right overflow-x-auto">0</div>
+            </div>
+            <div class="grid grid-cols-4 gap-3">
+                <button class="btn col-span-1" data-action="clear">AC</button>
+                <button class="btn" data-action="toggle-sign">+/-</button>
+                <button class="btn" data-action="percentage">%</button>
+                <button class="btn operator" data-action="divide">/</button>
+                <button class="btn" data-digit="7">7</button>
+                <button class="btn" data-digit="8">8</button>
+                <button class="btn" data-digit="9">9</button>
+                <button class="btn operator" data-action="multiply">*</button>
+                <button class="btn" data-digit="4">4</button>
+                <button class="btn" data-digit="5">5</button>
+                <button class="btn" data-digit="6">6</button>
+                <button class="btn operator" data-action="subtract">-</button>
+                <button class="btn" data-digit="1">1</button>
+                <button class="btn" data-digit="2">2</button>
+                <button class="btn" data-digit="3">3</button>
+                <button class="btn operator" data-action="add">+</button>
+                <button class="btn" data-action="left-parenthesis">(</button>
+                <button class="btn" data-digit="0">0</button>
+                <button class="btn" data-action="right-parenthesis">)</button>
+                <button class="btn operator" data-action="calculate">=</button>
+            </div>
+            <div class="grid grid-cols-4 gap-3 mt-3 other-section">
+                <button class="btn other" data-action="sin">sin</button>
+                <button class="btn other" data-action="cos">cos</button>
+                <button class="btn other" data-action="tan">tan</button>
+                <button class="btn other" data-action="log">log</button>
+            </div>
+        </div>
+        <p class="note">To view the calculation history, press <b>H</b> on the keyboard</p>
+    </div>
+    <div id="gameContainer" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg popup">
+            <h2 class="text-2xl font-bold mb-4">Mini-game</h2>
+            <p id="gameMessage" class="mb-4"></p>
+            <input type="text" id="gameInput" class="border p-2 mb-4 w-full" placeholder="Enter the answer">
+            <button id="gameButton" class="bg-blue-500 text-white px-4 py-2 rounded">Send</button>
+            <button id="closeGame" class="bg-red-500 text-white px-4 py-2 rounded ml-2">Close</button>
+        </div>
+    </div>
+    <div id="historyContainer" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded-lg w-full max-w-md popup">
+            <h2 class="text-2xl font-bold mb-4">The history of calculations</h2>
+            <ul id="historyList" class="mb-4 max-h-60 overflow-y-auto"></ul>
+            <button id="clearHistory" class="bg-red-500 text-white px-4 py-2 rounded">Clear the history</button>
+            <button id="closeHistory" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Close</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
